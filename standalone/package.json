@@ -1,0 +1,18 @@
+{
+  "name": "mc-bearer-token-standalone",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Open a temporary local browser session and copy your minecraft.net bearer token to the clipboard.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.mjs",
+    "start:print": "node src/index.mjs --print",
+    "check": "node --check src/index.mjs && node --check src/browser.mjs && node --check src/clipboard.mjs && node --check src/ui.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.64.0"
+  }
+}

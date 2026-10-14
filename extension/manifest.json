@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Minecraft Bearer Token",
+  "version": "1.0.0",
+  "description": "Read your minecraft.net bearer token locally from the active tab. No storage or external requests.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_title": "Minecraft Bearer Token",
+    "default_popup": "popup/index.html"
+  }
+}

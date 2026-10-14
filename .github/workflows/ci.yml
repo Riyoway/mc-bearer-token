@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: standalone/package-lock.json
+
+      - name: Install standalone dependencies
+        working-directory: standalone
+        run: npm ci --ignore-scripts
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check extension/popup/popup.js
+          node --check standalone/src/index.mjs
+          node --check standalone/src/browser.mjs
+          node --check standalone/src/clipboard.mjs
+          node --check standalone/src/ui.mjs
+
+      - name: Validate extension manifest
+        run: node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json', 'utf8'))"

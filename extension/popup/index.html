@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Minecraft Bearer Token</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <span class="eyebrow">MINECRAFT.NET</span>
+      <h1>Bearer Token</h1>
+      <p class="subtitle">Read your current token locally from the active tab.</p>
+    </header>
+
+    <div id="status" class="status" role="status" aria-live="polite">
+      Open a signed-in minecraft.net page, then select Get token.
+    </div>
+
+    <label class="token-label" for="token">Token</label>
+    <textarea
+      id="token"
+      class="token"
+      readonly
+      spellcheck="false"
+      autocomplete="off"
+      placeholder="Your bearer token will appear here"
+      aria-describedby="token-help"
+    ></textarea>
+
+    <p id="token-help" class="token-help">
+      The token stays only in this popup until it is closed.
+    </p>
+
+    <div class="actions">
+      <button id="get" class="button button-primary" type="button">Get token</button>
+      <button id="copy" class="button" type="button" disabled>Copy to clipboard</button>
+    </div>
+
+    <div class="warning">
+      <strong>Keep this private.</strong>
+      Anyone with this token may be able to act as your account while it remains valid.
+    </div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
