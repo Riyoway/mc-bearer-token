@@ -13,6 +13,6 @@
     "check": "node --check src/index.mjs && node --check src/browser.mjs && node --check src/clipboard.mjs && node --check src/ui.mjs"
   },
   "dependencies": {
-    "playwright-core": "1.64.0"
+    "playwright-core": "1.64.1"
   }
 }
