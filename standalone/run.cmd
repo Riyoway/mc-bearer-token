@@ -14,7 +14,9 @@ if errorlevel 1 (
   exit /b 1
 )
 
-if not exist "node_modules\playwright-core\package.json" (
+rem Reinstall if the pinned dependency is missing or out of date.
+node -e "const expected = require('./package.json').dependencies['playwright-core']; const locked = require('./package-lock.json').packages['node_modules/playwright-core'].version; const installed = require('./node_modules/playwright-core/package.json').version; process.exit(expected === locked && locked === installed ? 0 : 1)" >nul 2>nul
+if errorlevel 1 (
   echo.
   echo [SETUP] Installing the pinned local dependency...
   echo.
